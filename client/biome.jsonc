@@ -1,0 +1,31 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"files": {
+		"include": [
+			"src/**/*.ts",
+			"src/**/*.tsx",
+			"package.json",
+			"*.config.ts",
+			"*.config.js",
+			"tailwind-extends/**/*"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"lineWidth": 100 // default is `80`
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"javascript": {
+		"formatter": {
+			"attributePosition": "multiline"
+		}
+	}
+}
