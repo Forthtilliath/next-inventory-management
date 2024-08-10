@@ -13,6 +13,7 @@ export function Navbar() {
           onClick={() => {}}
         >
           <Menu className="size-4" />
+          <span className="sr-only">Toggle sidebar</span>
         </button>
         <div className="relative">
           <input
@@ -22,6 +23,7 @@ export function Navbar() {
           />
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-on">
             <Bell className="text-gray-500" size={20} />
+            <span className="sr-only">Search</span>
           </div>
         </div>
       </div>
@@ -32,10 +34,12 @@ export function Navbar() {
           <div>
             <button onClick={() => {}}>
               <Sun className="cursor-pointer text-gray-500" size={24} />
+              <span className="sr-only">Toggle dark mode</span>
             </button>
           </div>
           <div className="relative">
             <Bell className="cursor-pointer text-gray-500" size={24} />
+            <span className="sr-only">Notifications</span>
             <span className="absolute -top-2 -right-2 inline-flex items-center justify-center px-[0.4rem] py-1 text-xs font-semibold leading-none text-red-100 bg-red-400 rounded-full">
               3
             </span>
@@ -48,6 +52,7 @@ export function Navbar() {
         </div>
         <Link href="/settings">
           <Settings className="cursor-pointer text-gray-500" size={24} />
+          <span className="sr-only">Settings</span>
         </Link>
       </div>
     </div>

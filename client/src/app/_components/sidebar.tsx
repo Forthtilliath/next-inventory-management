@@ -14,6 +14,7 @@ export function Sidebar() {
           onClick={() => {}}
         >
           <Menu className="size-4" />
+          <span className="sr-only">Toggle sidebar</span>
         </button>
       </div>
 
