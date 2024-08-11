@@ -17,6 +17,8 @@ import z from "zod";
 
 const prisma = new PrismaClient();
 
+console.log("Seeding...");
+
 const schemas = {
 	product: z.array(ProductSchema),
 	expenseSummary: z.array(ExpenseSummarySchema),
