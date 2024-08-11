@@ -29,8 +29,6 @@ const schemas = {
 	expenseByCategory: z.array(ExpenseByCategorySchema),
 } as const;
 
-type ModelSchema<Model extends PrismaModel> = z.infer<(typeof schemas)[Model]>;
-
 export async function seedData<Model extends PrismaModel>(
 	prisma: PrismaClient,
 	modelName: Model,
@@ -43,46 +41,8 @@ export async function seedData<Model extends PrismaModel>(
 		process.exit(1);
 	}
 
-	switch (modelName) {
-		case "products":
-			return prisma.products.createMany({ data: parsed.data } as {
-				data: ModelSchema<"products">;
-			});
-		case "expenseSummary":
-			return prisma.expenseSummary.createMany({ data: parsed.data } as {
-				data: ModelSchema<"expenseSummary">;
-			});
-		case "sales":
-			return prisma.sales.createMany({ data: parsed.data } as {
-				data: ModelSchema<"sales">;
-			});
-		case "salesSummary":
-			return prisma.salesSummary.createMany({ data: parsed.data } as {
-				data: ModelSchema<"salesSummary">;
-			});
-		case "purchases":
-			return prisma.purchases.createMany({ data: parsed.data } as {
-				data: ModelSchema<"purchases">;
-			});
-		case "purchaseSummary":
-			return prisma.purchaseSummary.createMany({ data: parsed.data } as {
-				data: ModelSchema<"purchaseSummary">;
-			});
-		case "users":
-			return prisma.users.createMany({ data: parsed.data } as {
-				data: ModelSchema<"users">;
-			});
-		case "expenses":
-			return prisma.expenses.createMany({ data: parsed.data } as {
-				data: ModelSchema<"expenses">;
-			});
-		case "expenseByCategory":
-			return prisma.expenseByCategory.createMany({ data: parsed.data } as {
-				data: ModelSchema<"expenseByCategory">;
-			});
-		default:
-			throw new Error(`Unknown model: ${modelName}`);
-	}
+	// @ts-ignore modelName is a PrismaModel & data has the right type
+	return prisma[modelName].createMany({ data: parsed.data });
 }
 
 async function main() {
