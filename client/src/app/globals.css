@@ -9,10 +9,7 @@
 }
 
 html,
-body,
-#root,
-.app {
+body {
   height: 100%;
   width: 100%;
-  @apply text-sm bg-gray-100 text-gray-900;
 }
