@@ -34,7 +34,7 @@ const shadeMapping = [
 
 type ShadeMapping = (typeof shadeMapping)[number];
 
-export function customColors(): PluginCreator {
+export function customColors() {
 	const lightTheme = generateThemeObject(colors, shadeMapping);
 	const darkTheme = generateThemeObject(colors, shadeMapping, true);
 
@@ -49,12 +49,17 @@ export function customColors(): PluginCreator {
 			black: colors.gray[50],
 		},
 	};
-
-	return () => createThemes(themes);
+	return createThemes(themes, { defaultTheme: "light" });
 }
 
-function generateThemeObject(colors: DefaultColors, mapping: ShadeMapping[], invert = false) {
-	const theme: Partial<Record<(typeof baseColors)[number], Record<string, string>>> = {};
+function generateThemeObject(
+	colors: DefaultColors,
+	mapping: ShadeMapping[],
+	invert = false,
+) {
+	const theme: Partial<
+		Record<(typeof baseColors)[number], Record<string, string>>
+	> = {};
 
 	for (const color of baseColors) {
 		theme[color] = {};
@@ -68,9 +73,8 @@ function generateThemeObject(colors: DefaultColors, mapping: ShadeMapping[], inv
 }
 
 function getStringShade(shade: ShadeMapping, invert: boolean): ShadeMapping {
-	if (invert) {
-		return shade;
-	}
+	if (!invert) return shade;
+	
 	const inverted = (1000 - Number(shade)).toString();
 	assertsIsValidShade(inverted);
 

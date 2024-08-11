@@ -12,14 +12,6 @@ export function DashboardLayout({ children }: WithChildren) {
   );
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
-
   return (
     <div
       className={cn(
@@ -30,7 +22,7 @@ export function DashboardLayout({ children }: WithChildren) {
       <Sidebar />
       <main
         className={cn(
-          "flex flex-col w-full h-full py-7 px-9 bg-gray-50",
+          "flex flex-col w-full py-7 px-9 bg-gray-100",
           isSidebarCollapsed ? "md:pl-24" : "md:pl-72"
         )}
       >
