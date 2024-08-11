@@ -3,7 +3,7 @@ import { customColors } from "./tailwind-extends/custom-colors";
 
 const config: Config = {
 	darkMode: "class",
-	safelist: ['dark'],
+	safelist: ["dark"],
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,7 +13,12 @@ const config: Config = {
 		extend: {
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+				"gradient-conic":
+					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+			},
+			gridTemplateRows: {
+				"8-30": "repeat(8, 7.5dvh)",
+				"8-80": "repeat(8, 20dvh)",
 			},
 		},
 	},
