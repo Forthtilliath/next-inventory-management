@@ -4,28 +4,28 @@ import path from "node:path";
 import type { PrismaModel } from "./prisma.js";
 import {
 	ExpenseByCategorySchema,
-	ExpensesSchema,
+	ExpenseSchema,
 	ExpenseSummarySchema,
-	ProductsSchema,
-	PurchasesSchema,
+	ProductSchema,
+	PurchaseSchema,
 	PurchaseSummarySchema,
-	SalesSchema,
-	SalesSummarySchema,
-	UsersSchema,
+	SaleSchema,
+	SaleSummarySchema,
+	UserSchema,
 } from "./zod";
 import z from "zod";
 
 const prisma = new PrismaClient();
 
 const schemas = {
-	products: z.array(ProductsSchema),
+	product: z.array(ProductSchema),
 	expenseSummary: z.array(ExpenseSummarySchema),
-	sales: z.array(SalesSchema),
-	salesSummary: z.array(SalesSummarySchema),
-	purchases: z.array(PurchasesSchema),
+	sale: z.array(SaleSchema),
+	saleSummary: z.array(SaleSummarySchema),
+	purchase: z.array(PurchaseSchema),
 	purchaseSummary: z.array(PurchaseSummarySchema),
-	users: z.array(UsersSchema),
-	expenses: z.array(ExpensesSchema),
+	user: z.array(UserSchema),
+	expense: z.array(ExpenseSchema),
 	expenseByCategory: z.array(ExpenseByCategorySchema),
 } as const;
 
@@ -49,14 +49,14 @@ async function main() {
 	const dataDirectory = path.join(__dirname, "seedData");
 
 	const orderedFileNames = [
-		"products.json",
+		"product.json",
 		"expenseSummary.json",
-		"sales.json",
-		"salesSummary.json",
-		"purchases.json",
+		"sale.json",
+		"saleSummary.json",
+		"purchase.json",
 		"purchaseSummary.json",
-		"users.json",
-		"expenses.json",
+		"user.json",
+		"expense.json",
 		"expenseByCategory.json",
 	];
 
