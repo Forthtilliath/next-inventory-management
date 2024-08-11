@@ -1,16 +1,16 @@
 import { z } from 'zod';
 
 /////////////////////////////////////////
-// SALES SUMMARY SCHEMA
+// SALE SUMMARY SCHEMA
 /////////////////////////////////////////
 
-export const SalesSummarySchema = z.object({
+export const SaleSummarySchema = z.object({
   salesSummaryId: z.string(),
   totalValue: z.number(),
   changePercentage: z.number().nullable(),
   date: z.coerce.date(),
 })
 
-export type SalesSummary = z.infer<typeof SalesSummarySchema>
+export type SaleSummary = z.infer<typeof SaleSummarySchema>
 
-export default SalesSummarySchema;
+export default SaleSummarySchema;

@@ -1,10 +1,10 @@
 export { TransactionIsolationLevelSchema } from './TransactionIsolationLevelSchema';
-export { UsersScalarFieldEnumSchema } from './UsersScalarFieldEnumSchema';
-export { ProductsScalarFieldEnumSchema } from './ProductsScalarFieldEnumSchema';
-export { SalesScalarFieldEnumSchema } from './SalesScalarFieldEnumSchema';
-export { PurchasesScalarFieldEnumSchema } from './PurchasesScalarFieldEnumSchema';
-export { ExpensesScalarFieldEnumSchema } from './ExpensesScalarFieldEnumSchema';
-export { SalesSummaryScalarFieldEnumSchema } from './SalesSummaryScalarFieldEnumSchema';
+export { UserScalarFieldEnumSchema } from './UserScalarFieldEnumSchema';
+export { ProductScalarFieldEnumSchema } from './ProductScalarFieldEnumSchema';
+export { SaleScalarFieldEnumSchema } from './SaleScalarFieldEnumSchema';
+export { PurchaseScalarFieldEnumSchema } from './PurchaseScalarFieldEnumSchema';
+export { ExpenseScalarFieldEnumSchema } from './ExpenseScalarFieldEnumSchema';
+export { SaleSummaryScalarFieldEnumSchema } from './SaleSummaryScalarFieldEnumSchema';
 export { PurchaseSummaryScalarFieldEnumSchema } from './PurchaseSummaryScalarFieldEnumSchema';
 export { ExpenseSummaryScalarFieldEnumSchema } from './ExpenseSummaryScalarFieldEnumSchema';
 export { ExpenseByCategoryScalarFieldEnumSchema } from './ExpenseByCategoryScalarFieldEnumSchema';

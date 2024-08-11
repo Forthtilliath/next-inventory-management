@@ -1,8 +1,8 @@
-import type { Products } from "@prisma/client";
+import type { Product } from "@prisma/client";
 import prisma from "../prisma";
 
 export async function getPopularProducts() {
-	return prisma.products.findMany({
+	return prisma.product.findMany({
 		take: 15,
 		orderBy: {
 			stockQuantity: "desc",
@@ -11,7 +11,7 @@ export async function getPopularProducts() {
 }
 
 export async function findByName(search?: string) {
-	return prisma.products.findMany({
+	return prisma.product.findMany({
 		where: {
 			name: {
 				contains: search,
@@ -20,6 +20,6 @@ export async function findByName(search?: string) {
 	});
 }
 
-export async function create(data: Products) {
-	return prisma.products.create({ data });
+export async function create(data: Product) {
+	return prisma.product.create({ data });
 }

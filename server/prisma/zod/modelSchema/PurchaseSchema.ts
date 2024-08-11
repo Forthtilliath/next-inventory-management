@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
 /////////////////////////////////////////
-// PURCHASES SCHEMA
+// PURCHASE SCHEMA
 /////////////////////////////////////////
 
-export const PurchasesSchema = z.object({
+export const PurchaseSchema = z.object({
   purchaseId: z.string(),
   productId: z.string(),
   timestamp: z.coerce.date(),
@@ -13,6 +13,6 @@ export const PurchasesSchema = z.object({
   totalCost: z.number(),
 })
 
-export type Purchases = z.infer<typeof PurchasesSchema>
+export type Purchase = z.infer<typeof PurchaseSchema>
 
-export default PurchasesSchema;
+export default PurchaseSchema;

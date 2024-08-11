@@ -1,15 +1,15 @@
 import { z } from 'zod';
 
 /////////////////////////////////////////
-// USERS SCHEMA
+// USER SCHEMA
 /////////////////////////////////////////
 
-export const UsersSchema = z.object({
+export const UserSchema = z.object({
   userId: z.string(),
   name: z.string(),
   email: z.string(),
 })
 
-export type Users = z.infer<typeof UsersSchema>
+export type User = z.infer<typeof UserSchema>
 
-export default UsersSchema;
+export default UserSchema;

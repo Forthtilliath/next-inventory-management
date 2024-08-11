@@ -1,16 +1,16 @@
 import { z } from 'zod';
 
 /////////////////////////////////////////
-// EXPENSES SCHEMA
+// EXPENSE SCHEMA
 /////////////////////////////////////////
 
-export const ExpensesSchema = z.object({
+export const ExpenseSchema = z.object({
   expenseId: z.string(),
   category: z.string(),
   amount: z.number(),
   timestamp: z.coerce.date(),
 })
 
-export type Expenses = z.infer<typeof ExpensesSchema>
+export type Expense = z.infer<typeof ExpenseSchema>
 
-export default ExpensesSchema;
+export default ExpenseSchema;

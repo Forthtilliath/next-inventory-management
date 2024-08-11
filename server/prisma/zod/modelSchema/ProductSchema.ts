@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
 /////////////////////////////////////////
-// PRODUCTS SCHEMA
+// PRODUCT SCHEMA
 /////////////////////////////////////////
 
-export const ProductsSchema = z.object({
+export const ProductSchema = z.object({
   productId: z.string(),
   name: z.string(),
   price: z.number(),
@@ -12,6 +12,6 @@ export const ProductsSchema = z.object({
   stockQuantity: z.number().int(),
 })
 
-export type Products = z.infer<typeof ProductsSchema>
+export type Product = z.infer<typeof ProductSchema>
 
-export default ProductsSchema;
+export default ProductSchema;

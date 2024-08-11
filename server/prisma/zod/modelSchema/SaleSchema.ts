@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
 /////////////////////////////////////////
-// SALES SCHEMA
+// SALE SCHEMA
 /////////////////////////////////////////
 
-export const SalesSchema = z.object({
+export const SaleSchema = z.object({
   saleId: z.string(),
   productId: z.string(),
   timestamp: z.coerce.date(),
@@ -13,6 +13,6 @@ export const SalesSchema = z.object({
   totalAmount: z.number(),
 })
 
-export type Sales = z.infer<typeof SalesSchema>
+export type Sale = z.infer<typeof SaleSchema>
 
-export default SalesSchema;
+export default SaleSchema;
