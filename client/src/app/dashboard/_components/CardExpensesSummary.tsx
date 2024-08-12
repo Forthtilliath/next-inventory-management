@@ -1,5 +1,6 @@
 import { useGetDashboardMetricsQuery } from "@/lib/api";
-import { sumByKey } from "@/lib/helpers/sum";
+import { groupByAndSum } from "@/lib/helpers/groupByAndSum";
+import { avg, avgByKey, sum, sumByKey } from "@/lib/helpers/math";
 import { TrendingUp } from "lucide-react";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
@@ -11,26 +12,27 @@ const colors = ["#00C49F", "#0088FE", "#FFBB28"];
 
 export function CardExpensesSummary() {
 	const { data: dashboardMetrics, isLoading } = useGetDashboardMetricsQuery();
-	// Sert à rien ?! Affiché comme average mais c'est juste le dernier !
-	// TODO: A corriger !
-	const expensesSummary = dashboardMetrics?.expensesSummary?.[0];
+
+	const expensesSummary = dashboardMetrics?.expensesSummary || [];
+	const expensesSummaryAvg = avgByKey(expensesSummary, "totalExpenses").toFixed(
+		2,
+	);
+
 	const expensesSummaryByCategory =
 		dashboardMetrics?.expensesSummaryByCategory || [];
 
+	const expensesSummaryByCategorySums: ExpenseSums = groupByAndSum(
+		expensesSummaryByCategory,
+		"category",
+		"amount",
+	);
+
 	const expensesByCategories: { name: string; value: number }[] = [];
-	const expensesSummaryByCategorySums: ExpenseSums = {};
-
-	for (const item of expensesSummaryByCategory) {
-		expensesSummaryByCategorySums[item.category] =
-			(expensesSummaryByCategorySums[item.category] || 0) + item.amount;
-	}
-
 	for (const [name, value] of Object.entries(expensesSummaryByCategorySums)) {
 		expensesByCategories.push({ name: `${name} Expenses`, value });
 	}
 
-	const totalExpenses = sumByKey(expensesByCategories, "value");
-	const formattedTotalExpenses = totalExpenses.toFixed(2);
+	const totalExpenses = sumByKey(expensesByCategories, "value").toFixed(2);
 
 	return (
 		<div className="row-span-3 bg-white shadow-md rounded-2xl flex flex-col justify-between">
@@ -71,9 +73,7 @@ export function CardExpensesSummary() {
 								</PieChart>
 							</ResponsiveContainer>
 							<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center basis-2/5">
-								<span className="font-bold text-xl">
-									${formattedTotalExpenses}
-								</span>
+								<span className="font-bold text-xl">${totalExpenses}</span>
 							</div>
 						</div>
 						{/* LABELS */}
@@ -100,9 +100,7 @@ export function CardExpensesSummary() {
 								<div className="pt-2">
 									<p className="text-sm">
 										Average:{" "}
-										<span className="font-semibold">
-											${expensesSummary.totalExpenses?.toFixed(2)}
-										</span>
+										<span className="font-semibold">${expensesSummaryAvg}</span>
 									</p>
 								</div>
 								<span className="flex items-center mt-2">

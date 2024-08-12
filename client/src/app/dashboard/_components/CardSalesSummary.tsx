@@ -1,6 +1,6 @@
 import { useGetDashboardMetricsQuery } from "@/lib/api";
 import { formatNumberToShort } from "@/lib/helpers/format";
-import { sumByKey } from "@/lib/helpers/sum";
+import { sumByKey } from "@/lib/helpers/math";
 import { TrendingUp } from "lucide-react";
 import React, { useState } from "react";
 import {

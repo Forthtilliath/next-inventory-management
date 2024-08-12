@@ -8,3 +8,7 @@ export async function getLast() {
 		},
 	});
 }
+
+export async function getAll() {
+	return prisma.expenseSummary.findMany();
+}

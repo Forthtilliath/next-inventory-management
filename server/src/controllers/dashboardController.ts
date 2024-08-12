@@ -16,7 +16,7 @@ export async function getDashboardMetrics(
 			db.products.getPopularProducts(),
 			db.salesSummary.getLast(),
 			db.purchasesSummary.getLast(),
-			db.expensesSummary.getLast(),
+			db.expensesSummary.getAll(),
 			db.expensesSummaryByCategory.getLast(),
 		]);
 
