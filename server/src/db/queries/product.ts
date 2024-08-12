@@ -15,6 +15,7 @@ export async function findByName(search?: string) {
 		where: {
 			name: {
 				contains: search,
+				mode: "insensitive",
 			},
 		},
 	});
