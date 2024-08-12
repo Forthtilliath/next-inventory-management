@@ -22,7 +22,7 @@ export default function Dashboard() {
 			<CardExpensesSummary />
 			<StatCard
 				title="Customer & Expenses"
-				primaryIcon={<Package className="text-blue-600 w-6 h-6" />}
+				primaryIcon={<Package className="text-blue-600 size-6" />}
 				dateRange="22 - 29 October 2023"
 				details={[
 					{
@@ -41,7 +41,7 @@ export default function Dashboard() {
 			/>
 			<StatCard
 				title="Dues & Pending Orders"
-				primaryIcon={<CheckCircle className="text-blue-600 w-6 h-6" />}
+				primaryIcon={<CheckCircle className="text-blue-600 size-6" />}
 				dateRange="22 - 29 October 2023"
 				details={[
 					{
@@ -60,7 +60,7 @@ export default function Dashboard() {
 			/>
 			<StatCard
 				title="Sales & Discount"
-				primaryIcon={<Tag className="text-blue-600 w-6 h-6" />}
+				primaryIcon={<Tag className="text-blue-600 size-6" />}
 				dateRange="22 - 29 October 2023"
 				details={[
 					{
