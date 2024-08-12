@@ -25,7 +25,7 @@ export function Sidebar() {
 	return (
 		<div
 			className={cn(
-				"fixed flex flex-col bg-white overflow-hidden h-full shadow-md z-40",
+				"fixed flex flex-col bg-white overflow-hidden h-full shadow-md z-20",
 				"transition-all duration-300",
 				isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64",
 			)}
