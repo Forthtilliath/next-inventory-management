@@ -20,6 +20,9 @@ const config: Config = {
 				"8-30": "repeat(8, 7.5dvh)",
 				"8-80": "repeat(8, 20dvh)",
 			},
+			screens: {
+				"xs": "460px",
+			}
 		},
 	},
 	plugins: [customColors()],

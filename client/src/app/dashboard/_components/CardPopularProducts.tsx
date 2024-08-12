@@ -3,6 +3,7 @@ import React from "react";
 import { Rating } from "./Rating";
 import Image from "next/image";
 import { useGetDashboardMetricsQuery } from "@/lib/api";
+import { cn } from "@/lib/helpers/cn";
 
 const CardPopularProducts = () => {
 	const { data: dashboardMetrics, isLoading } = useGetDashboardMetricsQuery();
@@ -21,9 +22,12 @@ const CardPopularProducts = () => {
 						{dashboardMetrics?.popularProducts.map((product) => (
 							<div
 								key={product.productId}
-								className="flex items-center justify-between gap-3 px-5 py-7 border-b"
+								className={cn(
+									"flex items-center justify-between gap-x-3 max-xs:flex-col",
+									"px-5 py-7 [&:not(:last-child)]:border-b",
+								)}
 							>
-								<div className="flex items-center gap-3">
+								<div className="flex items-center gap-3 w-full">
 									<Image
 										src={`https://s3-inventorymanagement.s3.us-east-2.amazonaws.com/product${
 											Math.floor(Math.random() * 3) + 1
@@ -47,14 +51,13 @@ const CardPopularProducts = () => {
 									</div>
 								</div>
 
-								<div className="text-xs flex items-center">
-									<button
-										className="p-2 rounded-full bg-blue-100 text-blue-600 mr-2"
-										type="button"
-									>
-										<ShoppingBag className="w-4 h-4" />
-									</button>
-									{Math.round(product.stockQuantity / 1000)}k Sold
+								<div className="text-xs flex items-center gap-2 max-xs:-order-1 max-xs:ml-auto">
+									<ShoppingBag
+										className="p-2 rounded-full bg-blue-100 text-blue-600 max-xs:hidden"
+										size={32}
+										aria-labelledby="shopping bag"
+									/>
+									<span className="text-nowrap">{Math.round(product.stockQuantity / 1000)}k Sold</span>
 								</div>
 							</div>
 						))}
