@@ -26,7 +26,8 @@ export const api = createApi({
 			query: () => "/dashboard",
 			providesTags: ["DashboardMetrics"],
 		}),
-		getProducts: build.query<Product[], string>({
+		// biome-ignore lint/suspicious/noConfusingVoidType: this is how optional params work on rtk query
+		getProducts: build.query<Product[], string | void>({
 			query: (search = "") => ({
 				url: "/products",
 				params: { search },
@@ -52,4 +53,10 @@ export const api = createApi({
 	}),
 });
 
-export const { useGetDashboardMetricsQuery } = api;
+export const {
+	useGetDashboardMetricsQuery,
+	useGetProductsQuery,
+	useCreateProductMutation,
+	useGetUsersQuery,
+	useGetExpensesByCategoryQuery,
+} = api;
