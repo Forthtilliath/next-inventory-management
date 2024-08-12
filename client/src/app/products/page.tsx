@@ -4,9 +4,8 @@ import { useCreateProductMutation, useGetProductsQuery } from "@/lib/api";
 import { PlusCircleIcon, SearchIcon } from "lucide-react";
 import { useState } from "react";
 import { Header } from "@/app/_components/Header";
-import { Rating } from "@/app/_components/Rating";
-import Image from "next/image";
 import { CreateProductModal } from "@/app/products/_components/CreateProductModal";
+import { GridProducts } from "./_components/GridProducts";
 
 type ProductFormData = {
 	name: string;
@@ -71,42 +70,7 @@ export default function ProductsPage() {
 			</div>
 
 			{/* BODY PRODUCTS LIST */}
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg-grid-cols-3 gap-10 justify-between">
-				{isLoading ? (
-					<div>Loading...</div>
-				) : (
-					products?.map((product) => (
-						<div
-							key={product.productId}
-							className="border shadow rounded-md p-4 max-w-full w-full mx-auto"
-						>
-							<div className="flex flex-col items-center">
-								<Image
-									src={`https://s3-inventorymanagement.s3.us-east-2.amazonaws.com/product${
-										Math.floor(Math.random() * 3) + 1
-									}.png`}
-									alt={product.name}
-									width={150}
-									height={150}
-									className="mb-3 rounded-2xl w-36 h-36"
-								/>
-								<h3 className="text-lg text-gray-900 font-semibold">
-									{product.name}
-								</h3>
-								<p className="text-gray-800">${product.price.toFixed(2)}</p>
-								<div className="text-sm text-gray-600 mt-1">
-									Stock: {product.stockQuantity}
-								</div>
-								{product.rating && (
-									<div className="flex items-center mt-2">
-										<Rating rating={product.rating} />
-									</div>
-								)}
-							</div>
-						</div>
-					))
-				)}
-			</div>
+			{isLoading ? <div>Loading...</div> : <GridProducts products={products} />}
 
 			{/* MODAL */}
 			<CreateProductModal
