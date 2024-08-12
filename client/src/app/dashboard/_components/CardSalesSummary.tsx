@@ -118,6 +118,8 @@ export function CardSalesSummary() {
 											day: "numeric",
 										});
 									}}
+									labelClassName="text-gray-50"
+									wrapperClassName="!bg-gray-900"
 								/>
 								<Bar
 									dataKey="totalValue"

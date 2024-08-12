@@ -80,6 +80,8 @@ export function CardPurchasesSummary() {
 											day: "numeric",
 										});
 									}}
+									labelClassName="text-gray-50"
+									wrapperClassName="!bg-gray-900"
 								/>
 								<Area
 									type="linear"
