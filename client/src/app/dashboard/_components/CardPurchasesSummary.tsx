@@ -32,7 +32,7 @@ export function CardPurchasesSummary() {
 					</div>
 
 					{/* BODY */}
-					<div className="overflow-auto h-full">
+					<div className="h-full">
 						{/* BODY HEADER */}
 						<div className="mb-4 mt-7 px-7">
 							<p className="text-xs text-gray-400">Purchased</p>

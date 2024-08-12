@@ -1,9 +1,17 @@
 "use client";
 
+import {
+	CheckCircle,
+	Package,
+	Tag,
+	TrendingDown,
+	TrendingUp,
+} from "lucide-react";
 import { CardExpensesSummary } from "./_components/CardExpensesSummary";
 import CardPopularProducts from "./_components/CardPopularProducts";
 import { CardPurchasesSummary } from "./_components/CardPurchasesSummary";
 import { CardSalesSummary } from "./_components/CardSalesSummary";
+import { StatCard } from "./_components/StatCard";
 
 export default function Dashboard() {
 	return (
@@ -12,9 +20,63 @@ export default function Dashboard() {
 			<CardSalesSummary />
 			<CardPurchasesSummary />
 			<CardExpensesSummary />
-			<div className="row-span-1 xl:row-span-2 bg-gray-500" />
-			<div className="row-span-1 xl:row-span-2 bg-gray-500" />
-			<div className="row-span-1 xl:row-span-2 bg-gray-500" />
+			<StatCard
+				title="Customer & Expenses"
+				primaryIcon={<Package className="text-blue-600 w-6 h-6" />}
+				dateRange="22 - 29 October 2023"
+				details={[
+					{
+						title: "Customer Growth",
+						amount: 175,
+						changePercentage: 131,
+						IconComponent: TrendingUp,
+					},
+					{
+						title: "Expenses",
+						amount: 10,
+						changePercentage: -56,
+						IconComponent: TrendingDown,
+					},
+				]}
+			/>
+			<StatCard
+				title="Dues & Pending Orders"
+				primaryIcon={<CheckCircle className="text-blue-600 w-6 h-6" />}
+				dateRange="22 - 29 October 2023"
+				details={[
+					{
+						title: "Dues",
+						amount: 250,
+						changePercentage: 131,
+						IconComponent: TrendingUp,
+					},
+					{
+						title: "Pending Orders",
+						amount: 147,
+						changePercentage: -56,
+						IconComponent: TrendingDown,
+					},
+				]}
+			/>
+			<StatCard
+				title="Sales & Discount"
+				primaryIcon={<Tag className="text-blue-600 w-6 h-6" />}
+				dateRange="22 - 29 October 2023"
+				details={[
+					{
+						title: "Sales",
+						amount: 1000,
+						changePercentage: 20,
+						IconComponent: TrendingUp,
+					},
+					{
+						title: "Discount",
+						amount: 200,
+						changePercentage: -10,
+						IconComponent: TrendingDown,
+					},
+				]}
+			/>
 		</div>
 	);
 }
