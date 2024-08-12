@@ -6,14 +6,8 @@ export async function getExpensesSummaryByCategory(
 	res: Response,
 ): Promise<void> {
 	try {
-		const expenseSummaryByCategoryRaw =
+		const expenseSummaryByCategory =
 			await db.expensesSummaryByCategory.getAll();
-		const expenseSummaryByCategory = expenseSummaryByCategoryRaw.map(
-			(item) => ({
-				...item,
-				amount: item.amount.toString(),
-			}),
-		);
 
 		res.json(expenseSummaryByCategory);
 	} catch (error) {
