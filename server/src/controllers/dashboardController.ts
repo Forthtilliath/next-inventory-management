@@ -32,7 +32,7 @@ export async function getDashboardMetrics(
 			salesSummary,
 			purchasesSummary,
 			expensesSummary,
-			expensesByCategorySummary: expensesSummaryByCategory,
+			expensesSummaryByCategory,
 		});
 	} catch (error) {
 		res.status(500).json({ message: "Error retrieving dashboard metrics" });
