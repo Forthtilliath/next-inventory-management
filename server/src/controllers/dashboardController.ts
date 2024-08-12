@@ -9,18 +9,18 @@ export async function getDashboardMetrics(
 		const [
 			popularProducts,
 			salesSummary,
-			purchaseSummary,
-			expenseSummary,
-			expenseByCategorySummaryRaw,
+			purchasesSummary,
+			expensesSummary,
+			expensesSummaryByCategoryRaw,
 		] = await Promise.all([
 			db.products.getPopularProducts(),
 			db.salesSummary.getLast(),
-			db.purchaseSummary.getLast(),
-			db.expenseSummary.getLast(),
-			db.expenseByCategory.getLast(),
+			db.purchasesSummary.getLast(),
+			db.expensesSummary.getLast(),
+			db.expensesSummaryByCategory.getLast(),
 		]);
 
-		const expenseByCategorySummary = expenseByCategorySummaryRaw.map(
+		const expensesSummaryByCategory = expensesSummaryByCategoryRaw.map(
 			(item) => ({
 				...item,
 				amount: item.amount.toString(),
@@ -30,9 +30,9 @@ export async function getDashboardMetrics(
 		res.json({
 			popularProducts,
 			salesSummary,
-			purchaseSummary,
-			expenseSummary,
-			expenseByCategorySummary,
+			purchasesSummary,
+			expensesSummary,
+			expensesByCategorySummary: expensesSummaryByCategory,
 		});
 	} catch (error) {
 		res.status(500).json({ message: "Error retrieving dashboard metrics" });

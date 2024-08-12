@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type {
-	ExpenseByCategory,
+	ExpenseSummaryByCategory,
 	ExpenseSummary,
 	Product,
 	PurchaseSummary,
@@ -11,9 +11,9 @@ import type {
 export type DashboardMetrics = {
 	popularProducts: Product[];
 	salesSummary: SaleSummary[];
-	purchaseSummary: PurchaseSummary[];
-	expenseSummary: ExpenseSummary[];
-	expenseByCategory: ExpenseByCategory[];
+	purchasesSummary: PurchaseSummary[];
+	expensesSummary: ExpenseSummary[];
+	expensesSummaryByCategory: ExpenseSummaryByCategory[];
 };
 
 export const api = createApi({
@@ -24,6 +24,7 @@ export const api = createApi({
 		getDashboardMetrics: build.query<DashboardMetrics, void>({
 			query: () => "/dashboard",
 			providesTags: ["DashboardMetrics"],
+			
 		}),
 		getProducts: build.query<Product[], string>({
 			query: (search = "") => ({
@@ -44,7 +45,7 @@ export const api = createApi({
 			query: () => "/users",
 			providesTags: ["Users"],
 		}),
-		getExpensesByCategory: build.query<ExpenseByCategory[], void>({
+		getExpensesByCategory: build.query<ExpenseSummaryByCategory[], void>({
 			query: () => "/expenses",
 			providesTags: ["Expenses"],
 		}),

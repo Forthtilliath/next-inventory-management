@@ -7,7 +7,7 @@ export { ExpenseScalarFieldEnumSchema } from './ExpenseScalarFieldEnumSchema';
 export { SaleSummaryScalarFieldEnumSchema } from './SaleSummaryScalarFieldEnumSchema';
 export { PurchaseSummaryScalarFieldEnumSchema } from './PurchaseSummaryScalarFieldEnumSchema';
 export { ExpenseSummaryScalarFieldEnumSchema } from './ExpenseSummaryScalarFieldEnumSchema';
-export { ExpenseByCategoryScalarFieldEnumSchema } from './ExpenseByCategoryScalarFieldEnumSchema';
+export { ExpenseSummaryByCategoryScalarFieldEnumSchema } from './ExpenseSummaryByCategoryScalarFieldEnumSchema';
 export { SortOrderSchema } from './SortOrderSchema';
 export { QueryModeSchema } from './QueryModeSchema';
 export { NullsOrderSchema } from './NullsOrderSchema';

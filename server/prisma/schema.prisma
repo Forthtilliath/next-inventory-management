@@ -82,14 +82,14 @@ model PurchaseSummary {
 }
 
 model ExpenseSummary {
-  expenseSummaryId  String              @id
+  expenseSummaryId  String                     @id
   totalExpenses     Float
   date              DateTime
   //
-  expenseByCategory ExpenseByCategory[]
+  expenseByCategory ExpenseSummaryByCategory[]
 }
 
-model ExpenseByCategory {
+model ExpenseSummaryByCategory {
   expenseByCategoryId String         @id
   expenseSummaryId    String
   category            String

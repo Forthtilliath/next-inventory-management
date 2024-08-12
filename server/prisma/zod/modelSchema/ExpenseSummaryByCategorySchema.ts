@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
 /////////////////////////////////////////
-// EXPENSE BY CATEGORY SCHEMA
+// EXPENSE SUMMARY BY CATEGORY SCHEMA
 /////////////////////////////////////////
 
-export const ExpenseByCategorySchema = z.object({
+export const ExpenseSummaryByCategorySchema = z.object({
   expenseByCategoryId: z.string(),
   expenseSummaryId: z.string(),
   category: z.string(),
@@ -12,6 +12,6 @@ export const ExpenseByCategorySchema = z.object({
   date: z.coerce.date(),
 })
 
-export type ExpenseByCategory = z.infer<typeof ExpenseByCategorySchema>
+export type ExpenseSummaryByCategory = z.infer<typeof ExpenseSummaryByCategorySchema>
 
-export default ExpenseByCategorySchema;
+export default ExpenseSummaryByCategorySchema;

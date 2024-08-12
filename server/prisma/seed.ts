@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { PrismaModel } from "./prisma.js";
 import {
-	ExpenseByCategorySchema,
+	ExpenseSummaryByCategorySchema,
 	ExpenseSchema,
 	ExpenseSummarySchema,
 	ProductSchema,
@@ -28,7 +28,7 @@ const schemas = {
 	purchaseSummary: z.array(PurchaseSummarySchema),
 	user: z.array(UserSchema),
 	expense: z.array(ExpenseSchema),
-	expenseByCategory: z.array(ExpenseByCategorySchema),
+	expenseSummaryByCategory: z.array(ExpenseSummaryByCategorySchema),
 } as const;
 
 export async function seedData<Model extends PrismaModel>(
@@ -59,7 +59,7 @@ async function main() {
 		"purchaseSummary.json",
 		"user.json",
 		"expense.json",
-		"expenseByCategory.json",
+		"expenseSummaryByCategory.json",
 	];
 
 	for (const fileName of orderedFileNames) {

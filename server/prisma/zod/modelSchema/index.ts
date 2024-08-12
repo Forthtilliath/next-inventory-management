@@ -6,4 +6,4 @@ export * from './ExpenseSchema';
 export * from './SaleSummarySchema';
 export * from './PurchaseSummarySchema';
 export * from './ExpenseSummarySchema';
-export * from './ExpenseByCategorySchema';
+export * from './ExpenseSummaryByCategorySchema';

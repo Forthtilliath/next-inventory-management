@@ -1,0 +1,1 @@
+Schema copié de server\prisma\zod\modelSchema après chaque prisma generate 
