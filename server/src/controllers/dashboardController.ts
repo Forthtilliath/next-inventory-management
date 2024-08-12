@@ -11,7 +11,7 @@ export async function getDashboardMetrics(
 			salesSummary,
 			purchasesSummary,
 			expensesSummary,
-			expensesSummaryByCategoryRaw,
+			expensesSummaryByCategory,
 		] = await Promise.all([
 			db.products.getPopularProducts(),
 			db.salesSummary.getLast(),
@@ -19,13 +19,6 @@ export async function getDashboardMetrics(
 			db.expensesSummary.getLast(),
 			db.expensesSummaryByCategory.getLast(),
 		]);
-
-		const expensesSummaryByCategory = expensesSummaryByCategoryRaw.map(
-			(item) => ({
-				...item,
-				amount: item.amount.toString(),
-			}),
-		);
 
 		res.json({
 			popularProducts,

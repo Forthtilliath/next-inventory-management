@@ -11,30 +11,25 @@ const colors = ["#00C49F", "#0088FE", "#FFBB28"];
 
 export function CardExpensesSummary() {
 	const { data: dashboardMetrics, isLoading } = useGetDashboardMetricsQuery();
-  console.log(dashboardMetrics)
+	// Sert à rien ?! Affiché comme average mais c'est juste le dernier !
+	// TODO: A corriger !
 	const expensesSummary = dashboardMetrics?.expensesSummary?.[0];
-	const expensesSummaryByCategory = dashboardMetrics?.expensesSummaryByCategory || [];
+	const expensesSummaryByCategory =
+		dashboardMetrics?.expensesSummaryByCategory || [];
 
-	const expensesSums = expensesSummaryByCategory.reduce(
-		(acc: ExpenseSums, item) => {
-			const category = `${item.category} Expenses`;
-			if (!acc[category]) acc[category] = 0;
-			acc[category] += item.amount;
-			return acc;
-		},
-		{},
-	);
+	const expensesByCategories: { name: string; value: number }[] = [];
+	const expensesSummaryByCategorySums: ExpenseSums = {};
 
-	console.log("expenseSums", expensesSums);
-	const expenseCategories = Object.entries(expensesSums).map(
-		([name, value]) => ({
-			name,
-			value,
-		}),
-	);
-	console.log("expenseCategories", expenseCategories);
+	for (const item of expensesSummaryByCategory) {
+		expensesSummaryByCategorySums[item.category] =
+			(expensesSummaryByCategorySums[item.category] || 0) + item.amount;
+	}
 
-	const totalExpenses = sumByKey(expenseCategories, "value");
+	for (const [name, value] of Object.entries(expensesSummaryByCategorySums)) {
+		expensesByCategories.push({ name: `${name} Expenses`, value });
+	}
+
+	const totalExpenses = sumByKey(expensesByCategories, "value");
 	const formattedTotalExpenses = totalExpenses.toFixed(2);
 
 	return (
@@ -57,7 +52,7 @@ export function CardExpensesSummary() {
 							<ResponsiveContainer width="100%" height={140}>
 								<PieChart>
 									<Pie
-										data={expenseCategories}
+										data={expensesByCategories}
 										innerRadius={50}
 										outerRadius={60}
 										fill="#8884d8"
@@ -66,9 +61,9 @@ export function CardExpensesSummary() {
 										cx="50%"
 										cy="50%"
 									>
-										{expenseCategories.map((entry, index) => (
+										{expensesByCategories.map((entry, index) => (
 											<Cell
-												key={`cell-${index}`}
+												key={`cell-${entry.name}`}
 												fill={colors[index % colors.length]}
 											/>
 										))}
@@ -83,9 +78,9 @@ export function CardExpensesSummary() {
 						</div>
 						{/* LABELS */}
 						<ul className="flex flex-col justify-around items-center xl:items-start py-5 gap-3">
-							{expenseCategories.map((entry, index) => (
+							{expensesByCategories.map((entry, index) => (
 								<li
-									key={`legend-${index}`}
+									key={`legend-${entry.name}`}
 									className="flex items-center text-xs"
 								>
 									<span

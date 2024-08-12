@@ -7,6 +7,7 @@ import type {
 	SaleSummary,
 	User,
 } from "./schemas";
+import { z } from "zod";
 
 export type DashboardMetrics = {
 	popularProducts: Product[];
@@ -24,7 +25,6 @@ export const api = createApi({
 		getDashboardMetrics: build.query<DashboardMetrics, void>({
 			query: () => "/dashboard",
 			providesTags: ["DashboardMetrics"],
-			
 		}),
 		getProducts: build.query<Product[], string>({
 			query: (search = "") => ({
