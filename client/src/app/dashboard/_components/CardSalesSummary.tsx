@@ -1,4 +1,5 @@
 import { useGetDashboardMetricsQuery } from "@/lib/api";
+import { formatNumberToShort } from "@/lib/helpers/format";
 import { sumByKey } from "@/lib/helpers/sum";
 import { TrendingUp } from "lucide-react";
 import React, { useState } from "react";
@@ -99,9 +100,8 @@ export function CardSalesSummary() {
 									}}
 								/>
 								<YAxis
-									tickFormatter={(value) => {
-										return `$${(value / 1000000).toFixed(0)}m`;
-									}}
+									dataKey={"totalValue"}
+									tickFormatter={formatNumberToShort}
 									tick={{ fontSize: 12, dx: -1 }}
 									tickLine={false}
 									axisLine={false}
