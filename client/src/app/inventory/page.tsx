@@ -1,7 +1,7 @@
 "use client";
 
 import { useGetProductsQuery } from "@/lib/api";
-import Header from "@/app/_components/Header";
+import { Header } from "@/app/_components/Header";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 
 const columns: GridColDef[] = [
@@ -27,7 +27,7 @@ const columns: GridColDef[] = [
 		field: "stockQuantity",
 		headerName: "Stock",
 		width: 110,
-    maxWidth: 150,
+		maxWidth: 150,
 		type: "number",
 	},
 ];

@@ -1,6 +1,6 @@
 import { ShoppingBag } from "lucide-react";
 import React from "react";
-import { Rating } from "./Rating";
+import { Rating } from "../../_components/Rating";
 import Image from "next/image";
 import { useGetDashboardMetricsQuery } from "@/lib/api";
 import { cn } from "@/lib/helpers/cn";
