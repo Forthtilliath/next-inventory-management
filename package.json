@@ -1,0 +1,19 @@
+{
+	"name": "next-inventory-management",
+	"module": "index.ts",
+	"type": "module",
+	"scripts": {
+		"dev:server": "cd server && bun run dev",
+		"dev:client": "cd client && bun run dev",
+		"dev": "concurrently -c \"bgBlue,bgYellow\" \"bun:dev:*\""
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"concurrently": "^8.2.2"
+	}
+}
