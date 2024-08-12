@@ -15,7 +15,7 @@ export function Navbar() {
 	return (
 		<div className="flex justify-between items-center gap-5 w-full mb-7">
 			{/* LEFT SIDE */}
-			<div className="flex justify-between items-center gap-5">
+			<div className="flex items-center gap-5 flex-1">
 				<button
 					type="button"
 					className="p-3 bg-gray-100 rounded-full hover:bg-blue-100"
@@ -24,7 +24,7 @@ export function Navbar() {
 					<Menu className="size-4" />
 					<span className="sr-only">Toggle sidebar</span>
 				</button>
-				<div className="relative max-w-full w-[22rem] group">
+				<div className="relative max-w-[22rem] flex-1 group">
 					<input
 						type="search"
 						placeholder="Start type to search groups & products"
