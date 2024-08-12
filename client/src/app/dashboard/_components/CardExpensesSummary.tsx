@@ -62,6 +62,7 @@ export function CardExpensesSummary() {
 										nameKey="name"
 										cx="50%"
 										cy="50%"
+										className="outline-none"
 									>
 										{expensesByCategories.map((entry, index) => (
 											<Cell
