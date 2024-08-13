@@ -159,7 +159,7 @@ export default function ExpensesPage() {
 										<Cell
 											key={`cell-${entry.name}`}
 											fill={PIE_FILL_COLORS[index % PIE_FILL_COLORS.length]}
-											className="hover:fill-red-500"
+											className="hover:fill-gray-500 hover:stroke-2 outline-none"
 										/>
 									),
 								)}
@@ -226,7 +226,8 @@ function Field<T extends Value>({
 					id={id}
 					name={id}
 					className={cn(
-						"mt-1 block w-full pl-3 pr-10 py-2 text-base ring-1 border-black bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md",
+						"mt-1 block w-full pl-3 pr-10 py-2 text-base ring-1 bg-gray-50 sm:text-sm rounded-md border-r-[0.75rem] border-transparent",
+            "focus:ring-indigo-500",
 						className,
 					)}
 					onChange={onChange}
@@ -247,8 +248,9 @@ function Field<T extends Value>({
 					id={id}
 					name={id}
 					className={cn(
-						"mt-1 block w-full pl-3 pr-10 py-2 text-base ring-1 border-black bg-gray-50 sm:text-sm rounded-md",
-						"focus:ring-indigo-500 focus:border-indigo-500",
+						"mt-1 block w-full px-3 py-2 text-base ring-1 bg-gray-50 sm:text-sm rounded-md",
+						"focus:ring-indigo-500",
+            " dark:[color-scheme:dark]",
 						className,
 					)}
 					onChange={onChange}
