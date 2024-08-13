@@ -1,7 +1,6 @@
 import colors from "tailwindcss/colors";
 import type { DefaultColors } from "tailwindcss/types/generated/colors";
 import { createThemes } from "tw-colors";
-import type { PluginCreator } from "./types";
 
 type Color = Exclude<
 	keyof DefaultColors,
