@@ -7,7 +7,6 @@ import type {
 	SaleSummary,
 	User,
 } from "./schemas";
-import { z } from "zod";
 
 export type DashboardMetrics = {
 	popularProducts: Product[];
