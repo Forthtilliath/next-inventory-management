@@ -2,8 +2,9 @@ import { storeProductValidator } from '#validators/product'
 import type { HttpContextWithPrisma } from '#prisma/index'
 
 export default class ProductController {
-  async index({ params, prisma }: HttpContextWithPrisma) {
-    const { search } = params
+  async index({ request, prisma }: HttpContextWithPrisma) {
+    const { search } = request.qs()
+
     return prisma.product.findMany({
       where: {
         name: {
