@@ -43,8 +43,6 @@ export function CreateProductModal({ isOpen, onClose, onCreate }: Props) {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		console.log("formData", formData);
-		console.log("e", e);
 		onCreate(formData);
 		onClose();
 	};
@@ -52,7 +50,7 @@ export function CreateProductModal({ isOpen, onClose, onCreate }: Props) {
 	if (!isOpen) return null;
 
 	const inputCssStyles =
-		"block w-full mb-2 p-2 border-gray-500 border-2 rounded-md";
+		"block w-full mb-2 p-2 border-gray-500 border-2 rounded-md text-black dark:text-white";
 
 	return (
 		<div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-30">
