@@ -3,7 +3,7 @@
     "seed": "bunx prisma db push --force-reset && bunx prisma db seed",
     "build": "rm -rf dist && bunx tsc",
     "start": "bun run build && node dist/index.js",
-    "dev": "bun run build && tsx watch ./src/index.ts"
+    "dev": "tsx watch ./src/index.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",
