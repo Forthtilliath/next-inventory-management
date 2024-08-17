@@ -3,6 +3,7 @@
 import { useGetProductsQuery } from "@/lib/api";
 import { Header } from "@/app/_components/Header";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
+import { longCurrencyFormatter } from "@/lib/helpers/formatters";
 
 const columns: GridColDef[] = [
   {
@@ -23,7 +24,7 @@ const columns: GridColDef[] = [
     width: 110,
     maxWidth: 200,
     type: "number",
-    valueGetter: (_, row) => `$${row.price}`,
+    valueGetter: (_, row) => longCurrencyFormatter.format(row.price)
   },
   {
     field: "rating",
