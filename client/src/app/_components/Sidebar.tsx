@@ -33,7 +33,7 @@ export function Sidebar() {
 			{/* TOP LOGO */}
 			<div
 				className={cn(
-					"flex gap-3 justify-between md:justify-normal items-center pt-8",
+					"flex gap-3 justify-between md:justify-normal items-center pt-8 h-16",
 					isSidebarCollapsed ? "px-5" : "px-8",
 				)}
 			>
