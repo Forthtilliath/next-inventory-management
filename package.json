@@ -3,9 +3,13 @@
 	"module": "index.ts",
 	"type": "module",
 	"scripts": {
-		"dev:server": "cd server && bun run dev",
+		"dev:server:1": "cd server && bun run dev",
+		"dev:server:2": "cd server-adonis && npm run dev",
+		"dev:server": "bun run dev:server:2",
 		"dev:client": "cd client && bun run dev",
-		"dev": "concurrently -c \"bgBlue,bgYellow\" \"bun:dev:*\""
+		"dev:1": "concurrently -n \"server,client\" -c \"bgBlue,bgYellow\" \"bun:dev:server:1\" \"bun:dev:client\"",
+		"dev:2": "concurrently -n \"server,client\" -c \"bgBlue,bgYellow\" \"bun:dev:server:2\" \"bun:dev:client\"",
+		"dev": "bun run dev:2"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"
